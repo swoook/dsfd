@@ -1,3 +1,4 @@
+This repository is cloned from [Tencent/FaceDetection-DSFD](https://github.com/Tencent/FaceDetection-DSFD) and modified for research, functionality and convenience.
 
 <img src="imgs/DSFD_logo.PNG" title="Logo" width="300" /> 
 
@@ -56,7 +57,7 @@ export CUDA_VISIBLE_DEVICES=0
 
 2. Download our DSFD model [微云](https://share.weiyun.com/567x0xQ) [google drive](https://drive.google.com/file/d/1WeXlNYsM6dMP3xQQELI-4gxhwKUQxc3-/view?usp=sharing) trained on WIDER FACE training set to `$DSFD_ROOT/weights/`.
 
-  
+
 3. Check out `./demo.py` on how to detect faces using the DSFD model and how to plot detection results.
 ```
 python demo.py [--trained_model [TRAINED_MODEL]] [--img_root  [IMG_ROOT]] 
