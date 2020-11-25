@@ -42,12 +42,6 @@ ImportError: cannot import name 'pa_sfd_match'
 
 ## System Info
 
-```
-wget https://raw.githubusercontent.com/pytorch/pytorch/master/torch/utils/collect_env.py
-# For security purposes, please check the contents of collect_env.py before running it.
-python collect_env.py
-```
-
 - PyTorch or Caffe2: PyTorch
 - How you installed PyTorch (conda, pip, source): docker ([nvcr.io/nvidia/pytorch](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch))
 - Build command you used (if compiling from source): None
