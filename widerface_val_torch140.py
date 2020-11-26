@@ -47,6 +47,7 @@ if not os.path.exists(args.save_folder):
     os.mkdir(args.save_folder)
 
 def detect_face(image, shrink):
+    cuda = args.cuda
     x = image
     if shrink != 1:
         x = cv2.resize(image, None, None, fx=shrink, fy=shrink, interpolation=cv2.INTER_LINEAR)
@@ -57,42 +58,43 @@ def detect_face(image, shrink):
     x -= np.array([104, 117, 123],dtype=np.float32)
 
     x = torch.from_numpy(x).permute(2, 0, 1)
-    x = x.unsqueeze(0)
-    x = Variable(x.cuda(), volatile=True)
+    with torch.no_grad():
+        x = Variable(x.unsqueeze(0))
+        if cuda:
+            x = x.cuda()
+        #net.priorbox = PriorBoxLayer(width,height)
+        y = net(x)
+        detections = y.data
+        scale = torch.Tensor([width, height, width, height])
 
-    #net.priorbox = PriorBoxLayer(width,height)
-    y = net(x)
-    detections = y.data
-    scale = torch.Tensor([width, height, width, height])
+        boxes=[]
+        scores = []
+        for i in range(detections.size(1)):
+            j = 0
+            while detections[0,i,j,0] >= 0.01:
+                score = detections[0,i,j,0].cpu().numpy()
+                pt = (detections[0, i, j, 1:]*scale).cpu().numpy()
+                boxes.append([pt[0],pt[1],pt[2],pt[3]])
+                scores.append(score)
+                j += 1
+                if j >= detections.size(2):
+                    break
 
-    boxes=[]
-    scores = []
-    for i in range(detections.size(1)):
-        j = 0
-        while detections[0,i,j,0] >= 0.01:
-            score = detections[0,i,j,0]
-            pt = (detections[0, i, j, 1:]*scale).cpu().numpy()
-            boxes.append([pt[0],pt[1],pt[2],pt[3]])
-            scores.append(score)
-            j += 1
-            if j >= detections.size(2):
-                break
+        det_conf = np.array(scores)
+        boxes = np.array(boxes)
 
-    det_conf = np.array(scores)
-    boxes = np.array(boxes)
+        if boxes.shape[0] == 0:
+            return np.array([[0,0,0,0,0.001]])
 
-    if boxes.shape[0] == 0:
-        return np.array([[0,0,0,0,0.001]])
+        det_xmin = boxes[:,0] / shrink
+        det_ymin = boxes[:,1] / shrink
+        det_xmax = boxes[:,2] / shrink
+        det_ymax = boxes[:,3] / shrink
+        det = np.column_stack((det_xmin, det_ymin, det_xmax, det_ymax, det_conf))
 
-    det_xmin = boxes[:,0] / shrink
-    det_ymin = boxes[:,1] / shrink
-    det_xmax = boxes[:,2] / shrink
-    det_ymax = boxes[:,3] / shrink
-    det = np.column_stack((det_xmin, det_ymin, det_xmax, det_ymax, det_conf))
-
-    keep_index = np.where(det[:, 4] >= 0)[0]
-    det = det[keep_index, :]
-    return det
+        keep_index = np.where(det[:, 4] >= 0)[0]
+        det = det[keep_index, :]
+        return det
 
 
 def multi_scale_test(image, max_im_shrink):
