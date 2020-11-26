@@ -26,7 +26,7 @@
    └── wider_face_val.mat
    ```
 
-4. Move each file to the path given in the table below:
+4. Copy and paste each file to the path given in the table below:
 
    | Filename                       | Path                                                |
    | ------------------------------ | --------------------------------------------------- |
@@ -36,3 +36,5 @@
    | *wider_face_val_bbx_gt.txt*    | *\${WIDER_FACE_DIR}/WIDER_val/wider_face_split/*:   |
    | *wider_face_test.mat*          | *\${WIDER_FACE_DIR}/WIDER_test/wider_face_split/*:  |
    | *wider_face_test_filelist.txt* | *\${WIDER_FACE_DIR}/WIDER_test/wider_face_split/*:  |
+
+   * Keep all files in *\${WIDER_FACE_DIR}/wider_face_split*
