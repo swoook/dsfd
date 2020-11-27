@@ -38,7 +38,7 @@ parser.add_argument('--visual_threshold', default=0.1, type=float,
                     help='Final confidence threshold')
 parser.add_argument('--cuda', default=True, type=bool,
                     help='Use cuda to train model')
-parser.add_argument('--img_root', default='./data/worlds-largest-selfie.jpg', help='Location of test images directory')
+parser.add_argument('--img_root', default='/data/swook/dataset/wider-face/WIDER_val/images/0--Parade/0_Parade_marchingband_1_356.jpg', help='Location of test images directory')
 parser.add_argument('--widerface_root', default=WIDERFace_ROOT, help='Location of WIDERFACE root directory')
 args = parser.parse_args()
 
@@ -65,32 +65,33 @@ def infer(net , img , transform , thresh , cuda , shrink):
     if shrink != 1:
         img = cv2.resize(img, None, None, fx=shrink, fy=shrink, interpolation=cv2.INTER_LINEAR)
     x = torch.from_numpy(transform(img)[0]).permute(2, 0, 1)
-    x = Variable(x.unsqueeze(0) , volatile=True)
-    if cuda:
-        x = x.cuda()
-    #print (shrink , x.shape)
-    y = net(x)      # forward pass
-    detections = y.data
-    # scale each detection back up to the image
-    scale = torch.Tensor([ img.shape[1]/shrink, img.shape[0]/shrink,
-                         img.shape[1]/shrink, img.shape[0]/shrink] )
-    det = []
-    for i in range(detections.size(1)):
-        j = 0
-        while detections[0, i, j, 0] >= thresh:
-            score = detections[0, i, j, 0]
-            #label_name = labelmap[i-1]
-            pt = (detections[0, i, j, 1:]*scale).cpu().numpy()
-            coords = (pt[0], pt[1], pt[2], pt[3]) 
-            det.append([pt[0], pt[1], pt[2], pt[3], score])
-            j += 1
-    if (len(det)) == 0:
-        det = [ [0.1,0.1,0.2,0.2,0.01] ]
-    det = np.array(det)
+    with torch.no_grad():
+        x = Variable(x.unsqueeze(0))
+        if cuda:
+            x = x.cuda()
+        #print (shrink , x.shape)
+        y = net(x)      # forward pass
+        detections = y.data
+        # scale each detection back up to the image
+        scale = torch.Tensor([ img.shape[1]/shrink, img.shape[0]/shrink,
+                            img.shape[1]/shrink, img.shape[0]/shrink] )
+        det = []
+        for i in range(detections.size(1)):
+            j = 0
+            while detections[0, i, j, 0] >= thresh:
+                score = detections[0, i, j, 0].cpu().numpy()
+                #label_name = labelmap[i-1]
+                pt = (detections[0, i, j, 1:]*scale).cpu().numpy()
+                coords = (pt[0], pt[1], pt[2], pt[3]) 
+                det.append([pt[0], pt[1], pt[2], pt[3], score])
+                j += 1
+        if (len(det)) == 0:
+            det = [ [0.0,0.0,0.0,0.0,0.0] ]
+        det = np.array(det)
 
-    keep_index = np.where(det[:, 4] >= 0)[0]
-    det = det[keep_index, :]
-    return det
+        keep_index = np.where(det[:, 4] >= 0)[0]
+        det = det[keep_index, :]
+        return det
 
 def infer_flip(net , img , transform , thresh , cuda , shrink):
     img = cv2.flip(img, 1)
@@ -135,33 +136,13 @@ def vis_detections(im,  dets, image_name , thresh=0.5):
     class_name = 'face'
     inds = np.where(dets[:, -1] >= thresh)[0]
     if len(inds) == 0:
-        return
-    print (len(inds))
-    im = im[:, :, (2, 1, 0)]
-    fig, ax = plt.subplots(figsize=(12, 12))
-    ax.imshow(im, aspect='equal')
+        cv2.imwrite(os.path.join(args.save_folder, 'demo-result.png'), im)
+
     for i in inds:
-        bbox = dets[i, :4]
+        bbox = [int(itm) for itm in dets[i, :4]]
         score = dets[i, -1]
-        ax.add_patch(
-            plt.Rectangle((bbox[0], bbox[1]),
-                          bbox[2] - bbox[0],
-                          bbox[3] - bbox[1], fill=False,
-                          edgecolor='red', linewidth=2.5)
-            )
-        '''
-        ax.text(bbox[0], bbox[1] - 5,
-                '{:s} {:.3f}'.format(class_name, score),
-                bbox=dict(facecolor='blue', alpha=0.5),
-                fontsize=10, color='white')
-        '''
-    ax.set_title(('{} detections with '
-                  'p({} | box) >= {:.1f}').format(class_name, class_name,
-                                                  thresh),
-                  fontsize=10)
-    plt.axis('off')
-    plt.tight_layout()
-    plt.savefig(args.save_folder+image_name, dpi=fig.dpi)
+        cv2.rectangle(im, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0, 0, 0))
+    cv2.imwrite(os.path.join(args.save_folder, 'demo-result.png'), im)
 
 def test_oneimage():
     # load net
