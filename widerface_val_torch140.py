@@ -84,7 +84,7 @@ def detect_face(image, shrink):
         boxes = np.array(boxes)
 
         if boxes.shape[0] == 0:
-            return np.array([[0,0,0,0,0.001]])
+            return np.array([[0, 0, 0, 0, 1e-5]])
 
         det_xmin = boxes[:,0] / shrink
         det_ymin = boxes[:,1] / shrink
