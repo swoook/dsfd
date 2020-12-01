@@ -44,10 +44,22 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 - `torch==1.4.0`
 - `torchvision==0.5.0`
 
+## Development Environments
+
+### Conda
+
+* [*conda-env.yml*]() is appropriate if you'd like to use this repository on conda environment
+* Please refer to [Managing environments — conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?highlight=yml file#creating-an-environment-from-an-environment-yml-file) for more details
+
+### Docker
+
+* [*nvcr.io/nvidia/pytorch:19.11-py3*]() is appropriate if you'd like to use this repository on docker container
+* Please refer to [PyTorch | NVIDIA NGC](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch) for more details
+
 ## Getting Started
 
 ### Installation
-* Clone this repository. We will call the cloned directory as *\${DSFD_DIR}*.
+* Clone this repository
 
 ```bash
 git clone https://github.com/swoook/dsfd.git
@@ -70,8 +82,6 @@ cd ${DSFD_DIR}/dsfd
 <p align='center'>
   <img src='./imgs/DSFD_demo2.PNG' width='1000'/>
 </p>
-
-
 ### Citation
 If you find DSFD useful in your research, please consider citing: 
 ```
