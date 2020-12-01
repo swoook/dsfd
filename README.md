@@ -35,6 +35,7 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 <p align='center'>
 <img src='./imgs/DSFD_fddb.PNG' alt='DSFD FDDB Performance' width='1000px'>
 </p>
+
 ## Requirements
 
 - `cudatoolkit==10.2`
