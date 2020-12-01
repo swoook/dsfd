@@ -48,12 +48,12 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 
 ### Conda
 
-* [*conda-env.yml*]() is appropriate if you'd like to use this repository on conda environment
-* Please refer to [Managing environments — conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?highlight=yml file#creating-an-environment-from-an-environment-yml-file) for more details
+* [*conda-py36torch14.yml*](https://github.com/swoook/dsfd/blob/master/dev-envs/conda-py36torch14.yml) is appropriate if you'd like to use this repository on conda environment
+* Please refer to [Managing environments — conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html?highlight=yml%20file#creating-an-environment-from-an-environment-yml-file) for more details
 
 ### Docker
 
-* [*nvcr.io/nvidia/pytorch:19.11-py3*]() is appropriate if you'd like to use this repository on docker container
+* *nvcr.io/nvidia/pytorch:19.11-py3* is appropriate if you'd like to use this repository on docker container
 * Please refer to [PyTorch | NVIDIA NGC](https://ngc.nvidia.com/catalog/containers/nvidia:pytorch) for more details
 
 ## Getting Started
