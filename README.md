@@ -1,4 +1,4 @@
-## :loudspeaker: This is Cloned repo!
+## :loudspeaker: This is cloned repository!
 
 This repository is cloned from [Tencent/FaceDetection-DSFD](https://github.com/Tencent/FaceDetection-DSFD) and modified for research, compatibility, functionality and convenience.
 
