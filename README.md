@@ -70,9 +70,10 @@ cd ${DSFD_DIR}/dsfd
 
 * Refer to [*demo.md*](https://github.com/swoook/dsfd/blob/master/docs/demo.md) for detailed instructions
 
-### Validation
+### WIDER FACE Validation
 
-* Refer to [*validation.md*](https://github.com/swoook/dsfd/blob/master/docs/validation.md) for detailed instructions
+1. Data Preparation : Refer to [*data-preparation.md*](https://github.com/swoook/dsfd/blob/master/docs/data-preparation.md) for detailed instructions
+2. Evaluation: Refer to [*validation.md*](https://github.com/swoook/dsfd/blob/master/docs/validation.md) for detailed instructions
 
 ## Qualitative Results
 <p align='center'>
