@@ -72,8 +72,8 @@ cd ${DSFD_DIR}/dsfd
 
 ### WIDER FACE Validation
 
-1. Data Preparation : Refer to [*data-preparation.md*](https://github.com/swoook/dsfd/blob/master/docs/data-preparation.md) for detailed instructions
-2. Evaluation: Refer to [*validation.md*](https://github.com/swoook/dsfd/blob/master/docs/validation.md) for detailed instructions
+1. Data Preparation : Refer to [*data-preparation.md*](docs/data-preparation.md) for detailed instructions
+2. Evaluation: Refer to [*validation.md*](docs/validation.md) for detailed instructions
 
 ## Qualitative Results
 <p align='center'>
