@@ -68,7 +68,7 @@ cd ${DSFD_DIR}/dsfd
 
 ### Demo
 
-* Refer to [*demo.md*](https://github.com/swoook/dsfd/blob/master/docs/demo.md) for detailed instructions
+* Refer to [*demo.md*](docs/demo.md) for detailed instructions
 
 ### WIDER FACE Validation
 

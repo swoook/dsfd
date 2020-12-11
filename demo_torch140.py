@@ -38,7 +38,7 @@ parser.add_argument('--visual_threshold', default=0.1, type=float,
                     help='Final confidence threshold')
 parser.add_argument('--cuda', default=True, type=bool,
                     help='Use cuda to train model')
-parser.add_argument('--img_root', default='/data/swook/dataset/wider-face/WIDER_val/images/0--Parade/0_Parade_marchingband_1_356.jpg', help='Location of test images directory')
+parser.add_argument('--img_root', default='data/worlds-largest-selfie.jpg', help='Location of test images directory')
 parser.add_argument('--widerface_root', default=WIDERFace_ROOT, help='Location of WIDERFACE root directory')
 args = parser.parse_args()
 

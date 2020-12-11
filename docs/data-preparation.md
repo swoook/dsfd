@@ -37,4 +37,4 @@
    | *wider_face_test.mat*          | *\${WIDER_FACE_DIR}/WIDER_test/wider_face_split/*:  |
    | *wider_face_test_filelist.txt* | *\${WIDER_FACE_DIR}/WIDER_test/wider_face_split/*:  |
 
-   * Keep all files in *\${WIDER_FACE_DIR}/wider_face_split*
+   * Keep all files in *\${WIDERFACE_DIR}/wider_face_split*

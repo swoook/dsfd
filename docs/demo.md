@@ -14,5 +14,5 @@
 * Typical commands to execute this demo with CUDA is:
 
 ```
-root@501243bba88b:/swook/repos/tencent/dsfd# python demo.py --trained_model /swook/model/dsfd/WIDERFace_DSFD_RES152.pth --widerface_root /swook/dataset/wider-face/WIDER_val/ --save_folder ./save --visual_threshold 0.1 --cuda CUDA
+root@501243bba88b:${DSFD_DIR}# python demo.py --trained_model ${PTH_DIR}/WIDERFace_DSFD_RES152.pth --widerface_root ${WIDERFACE_DIR}/WIDER_val/ --save_folder ./save --visual_threshold 0.1 --cuda CUDA
 ```
