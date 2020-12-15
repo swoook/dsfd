@@ -62,8 +62,8 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 * Clone this repository
 
 ```bash
-git clone https://github.com/swoook/dsfd.git
-cd ${DSFD_DIR}/dsfd
+> git clone https://github.com/swoook/dsfd.git
+> cd ${DSFD_DIR}/dsfd
 ```
 
 ### Demo
