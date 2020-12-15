@@ -32,9 +32,12 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 | :--------: | :---: | :----: | :---: | :----------------------------------------------------------: |
 | ResNet-152 | 0.967 | 0.952  | 0.905 | [here](https://s3.amazonaws.com/pytorch/models/resnet152-b121ed2d.pth) |
 
+<sup>AP performance of on WIDER FACE validation set. </sup>
+
 <p align='center'>
 <img src='./imgs/DSFD_widerface.PNG' alt='DSFD Widerface Performance' width='1000px'>
 </p>
+
 
 ### FDDB
 <p align='center'>
