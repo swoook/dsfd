@@ -27,6 +27,11 @@ For more details, please refer to our paper [DSFD: Dual Shot Face Detector](http
 Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/WiderFace_Results.html) and [FDDB](http://vis-www.cs.umass.edu/fddb/results.html) benchmark.
 
 ### WIDER FACE
+
+|  Backbone  | Easy  | Medium | Hard  |                           Download                           |
+| :--------: | :---: | :----: | :---: | :----------------------------------------------------------: |
+| ResNet-152 | 0.967 | 0.952  | 0.905 | [here](https://s3.amazonaws.com/pytorch/models/resnet152-b121ed2d.pth) |
+
 <p align='center'>
 <img src='./imgs/DSFD_widerface.PNG' alt='DSFD Widerface Performance' width='1000px'>
 </p>
