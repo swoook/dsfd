@@ -31,6 +31,8 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 <p align='center'>
 <img src='./imgs/DSFD_widerface.PNG' alt='DSFD Widerface Performance' width='1000px'>
 </p>
+
+
 |  Backbone  | Easy  | Medium | Hard  | E2E latency (s) |                           Download                           |
 | :--------: | :---: | :----: | :---: | --------------- | :----------------------------------------------------------: |
 | ResNet-152 | 0.967 | 0.952  | 0.905 | 6.26            | [here](https://s3.amazonaws.com/pytorch/models/resnet152-b121ed2d.pth) |
