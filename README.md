@@ -28,18 +28,23 @@ Our DSFD face detector achieves state-of-the-art performance on [WIDER FACE](htt
 
 ### WIDER FACE
 
-|  Backbone  | Easy  | Medium | Hard  |                           Download                           |
-| :--------: | :---: | :----: | :---: | :----------------------------------------------------------: |
-| ResNet-152 | 0.967 | 0.952  | 0.905 | [here](https://s3.amazonaws.com/pytorch/models/resnet152-b121ed2d.pth) |
-
-<sup>AP performance of on WIDER FACE validation set. </sup>
-
 <p align='center'>
 <img src='./imgs/DSFD_widerface.PNG' alt='DSFD Widerface Performance' width='1000px'>
 </p>
+|  Backbone  | Easy  | Medium | Hard  | E2E latency (s) |                           Download                           |
+| :--------: | :---: | :----: | :---: | --------------- | :----------------------------------------------------------: |
+| ResNet-152 | 0.967 | 0.952  | 0.905 | 6.26            | [here](https://s3.amazonaws.com/pytorch/models/resnet152-b121ed2d.pth) |
 
+**Easy**, **Medium** and **Hard** denote AP on WIDER FACE validation set Easy, Medium and Hard, respectively.
+
+**E2E latency** denotes an end-to-end latency (= preprocess + network + TTA + postprocess).
+
+Latency is measured with batch size **1** on **RTX 2080Ti GPU** and **Threadripper 2950X CPU**.
+
+Confidence thresholds were set to **0.01** for both AP and latency benchmark.
 
 ### FDDB
+
 <p align='center'>
 <img src='./imgs/DSFD_fddb.PNG' alt='DSFD FDDB Performance' width='1000px'>
 </p>
