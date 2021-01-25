@@ -1,6 +1,7 @@
 ## Validation: WIDER FACE $\mathrm{val}$
 
-* *\${DSFD_DIR}/widerface_val.py* evaluates DSFD on WIDER FACE $\mathrm{val}$
+* *\${REPO-ROOT}/widerface_val.py* evaluates DSFD on WIDER FACE val
+* Use *\${REPO-ROOT}/widerface_val_torch140.py* if you use `torch > 1.4`
 
 | flags          | description                                                  |
 | -------------- | ------------------------------------------------------------ |
@@ -26,8 +27,10 @@
 
 1. Download [eval_tools](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/support/eval_script/eval_tools.zip) to *\${DSFD_DIR}* and unzip it
 
-2. Typical command for evaluation is written below:
+2. Execute the command below to evaluate DSFD on WIDER FACE val
 
    ```
    root@501243bba88b:${DSFD_DIR}# python widerface_val.py --trained_model ${PTH_DIR}/WIDERFace_DSFD_RES152.pth --widerface_root ${WIDERFACE_DIR} --save_folder ./val-res/wider-face-val --cuda CUDA
    ```
+   
+3. Calculate APs by using [swoook/widerface-evaluation](https://github.com/swoook/widerface-evaluation)
